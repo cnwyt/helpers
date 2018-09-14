@@ -9,8 +9,8 @@ if (! function_exists('get_version')) {
     }
 }
 
-/*
- * 格式化显示价格，保留2位小数，第二位小数为0(只精确到角)
+/**
+ * 格式化显示价格
  */
 if (!function_exists('format_price')) {
     /**
@@ -79,7 +79,7 @@ if (!function_exists('is_phone_number')) {
         return false;
     }
 }
-// --------------------------------------------------------------------------
+
 /**
  * is_url
  */
@@ -95,7 +95,39 @@ if (!function_exists('is_url')) {
     }
 }
 
-// --------------------------------------------------------------------------
+if (!function_exists('is_from_weixin')) {
+    /**
+     * 是否是微信请求
+     *
+     * @return bool
+     */
+    function is_from_weixin()
+    {
+        if (!empty($_SERVER['HTTP_USER_AGENT'])
+            && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists("is_ajax")) {
+    /**
+     * 是否是ajax请求
+     *
+     * @return bool
+     */
+    function is_ajax()
+    {
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+            return true;
+        }
+
+        return false;
+    }
+}
 
 if (!function_exists('get_user_agent')) {
     /**
@@ -106,3 +138,38 @@ if (!function_exists('get_user_agent')) {
         return (string) getenv('HTTP_USER_AGENT');
     }
 }
+
+if (!function_exists("is_valid_email")) {
+    function is_valid_email($email = '')
+    {
+        if($email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists("is_valid_url")) {
+    function is_valid_url($url = '')
+    {
+        if($url && filter_var($url, FILTER_VALIDATE_URL)) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists("is_valid_ip")) {
+    function is_valid_ip($url = '', $options = null)
+    {
+        if($url && filter_var($url, FILTER_VALIDATE_IP, $options)) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+// --------------------------------------------------------------------------
