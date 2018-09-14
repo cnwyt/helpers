@@ -63,19 +63,35 @@ if (!function_exists('get_fuzzy_name')) {
  *
  * 号段: 13*, 14*, 15*, 16*, 17*, 18*, 19*
  */
-if (!function_exists('check_mobile_number')) {
+if (!function_exists('is_phone_number')) {
     /**
-     * @param $mobile
+     * 检测是不是手机号
+     *
+     * @param $phoneNumber
      * @return bool
      */
-    function is_mobile_number($mobile)
+    function is_phone_number($phoneNumber)
     {
-        if (preg_match("/^1[3456789]{1}\d{9}$/", $mobile)) {
+        if (preg_match('/^1[3456789]{1}\d{9}$/', $phoneNumber)) {
             return true;
-        } else {
-            return false;
         }
 
+        return false;
+    }
+}
+// --------------------------------------------------------------------------
+/**
+ * is_url
+ */
+if (!function_exists('is_url')) {
+    function is_url($url = '')
+    {
+        $pattern = "/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?$/";
+        if (!preg_match($pattern, $url)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 
