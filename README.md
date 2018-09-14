@@ -1,3 +1,3 @@
 # helpers
 
-Helper functions
+A Common Helper Functions for PHP

@@ -1,0 +1,22 @@
+{
+    "name": "cnwyt/helpers",
+    "description": "Common Helper Functions for PHP",
+    "type": "library",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "files": ["src/helpers.php"]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "WYT",
+            "email": "cnwyt@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
