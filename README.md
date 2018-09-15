@@ -1,7 +1,6 @@
 # helpers
 
-A Common Helper Functions for PHP
-
+A Common Helper Function Library for PHP
 
 ### Install
 
