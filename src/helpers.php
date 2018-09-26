@@ -9,6 +9,33 @@ if (!function_exists('get_version')) {
     }
 }
 
+if (!function_exists('is_json')) {
+    /**
+     * 判断字符串数据是合法的JSON数据: 
+     * 判断依据: 解析没有错误 (PHP >= 5.3)
+     *
+     * @param string $string
+     * @return bool
+     */
+    function is_json($string = '') {
+        json_decode($string);
+        return (json_last_error() == JSON_ERROR_NONE);
+    }
+}
+
+if (!function_exists('is_not_json')) {
+    /**
+     * 判断字符串数据不是JSON数据
+     * 判断依据: 数据无法解析
+     *
+     * @param string $string
+     * @return bool
+     */
+    function is_not_json($string = ''){
+        return is_null(json_decode($string));
+    }
+}
+
 /**
  * 格式化显示价格
  */
