@@ -11,13 +11,14 @@ if (!function_exists('get_version')) {
 
 if (!function_exists('is_json')) {
     /**
-     * 判断字符串数据是合法的JSON数据: 
+     * 判断字符串数据是合法的JSON数据:
      * 判断依据: 解析没有错误 (PHP >= 5.3)
      *
      * @param string $string
      * @return bool
      */
-    function is_json($string = '') {
+    function is_json($string = '')
+    {
         json_decode($string);
         return (json_last_error() == JSON_ERROR_NONE);
     }
@@ -31,7 +32,8 @@ if (!function_exists('is_not_json')) {
      * @param string $string
      * @return bool
      */
-    function is_not_json($string = ''){
+    function is_not_json($string = '')
+    {
         return is_null(json_decode($string));
     }
 }
